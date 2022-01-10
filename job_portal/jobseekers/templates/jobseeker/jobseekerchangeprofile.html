@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{%extends 'jobseeker/jobseekerbase.html' %}
+
+ {%block body_block%}
+
+<div class="container">
+
+       <div class="row">
+
+    <div class="col-6">
+      {%if messages%}
+        {%for message in messages%}
+        {%if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        <div class="text-danger">
+          {{message}}
+        </div>
+        {%endif%}
+        {%endfor%}
+        {%endif%}
+    </div>
+    <div class="col-6"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+
+    </div>
+    <div class="col-4">
+
+      <h1>Add Profile</h1>
+         <form action="" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+        {{form.as_p}}
+           <input type="submit" value="ADD">
+      </form>
+
+    </div>
+      <div class="col-6"></div>
+  </div></div>
+{%endblock%}

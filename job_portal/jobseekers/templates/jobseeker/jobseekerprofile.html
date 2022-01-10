@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{%extends 'jobseeker/jobseekerbase.html' %}
+
+ {%block body_block%}
+
+<div class="container">
+
+       <div class="row">
+
+    <div class="col-6">
+      {%if messages%}
+        {%for message in messages%}
+        {%if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+
+        <div class="text-danger">
+          {{message}}
+        </div>
+        {%endif%}
+        {%endfor%}
+        {%endif%}
+    </div>
+    <div class="col-6"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+
+
+
+
+    </div>
+    <div class="col-4">
+
+      <h1>Add Profile</h1>
+         <form action="" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+        {{form.as_p}}
+           <input type="submit" value="ADD">
+      </form>
+
+    </div>
+    <div class="col-6">
+        <div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-7">
+            <div class="card p-3 py-4">
+                   {%for pro in profile%}
+                <div class="text-center"> <img src="{{pro.profile_pic.url}}" width="100" class="rounded-circle"> </div>
+                <div class="text-center mt-3"> <span class="bg-secondary p-1 px-4 rounded text-white">{{pro.name}}</span>
+                    <h5 class="mt-2 mb-0">Qualification:{{pro.qualification}}</h5>
+                    <h5 class="mt-2 mb-0">Experience:{{pro.experience}}</h5><br>
+                    <a href="{%url 'changejpbseekerprofile' pro.id %}" class="btn btn-primary px-4"> Edit</a>
+
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+  </div>
+</div>
+
+{%endblock%}
+

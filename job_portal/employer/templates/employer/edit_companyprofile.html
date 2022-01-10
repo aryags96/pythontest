@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{%extends 'employer/employerbase.html'%}
+
+ {%block body_block%}
+<div class="container">
+    <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      {%if messages%}
+        {%for message in messages%}
+        {%if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        <div class="text-danger">
+          {{message}}
+        </div>
+        {%endif%}
+        {%endfor%}
+        {%endif%}
+    </div>
+    <div class="col-3"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+        {{request.user}}
+    </div>
+    <div class="col-4">
+
+      <h1>Company profile</h1>
+         <form action="" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+<!--        {{form.as_p}}-->
+
+                   {%for field in form%}
+          {%if field.errors%}
+          <div class="text-danger text-decoration-none" >
+{{field.errors}}
+          </div>
+          {%endif%}
+        {{field.label_tag}}
+        {{field}}
+        {%endfor%}
+           <input type="submit" value="ADD">
+      </form>
+
+    </div>
+    <div class="col-6">
+
+    </div>
+  </div>
+</div>
+
+{%endblock%}

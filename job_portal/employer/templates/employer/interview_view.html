@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+{%extends 'employer/employerbase.html'%}
+{%load static%}
+ {%block body_block%}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+
+              <form action="" method="post">
+                {%csrf_token%}
+               <table class="table">
+                   <tr>
+                       <td><strong>Company</strong></td>
+                       <td><strong>User</strong></td>
+                       <td><strong>POSTS</strong></td>
+                       <td><strong>EXPERIENCE</strong></td>
+                       <td><strong>DESCRIPTION</strong></td>
+                       <td colspan="2"><strong>Actions</strong></td>
+                   </tr>
+
+                   {%for forms in form%}
+
+
+                   <tr>
+                       {{forms.job}}
+                       {{forms.id}}
+                       <td>{{forms.job.company.company_name}}</td>
+                       <td>{{forms.user}}</td>
+                       <td>{{forms.job.post_name}}</td>
+                       <td>{{forms.job.experience}}</td>
+                       <td>{{forms.job.description}}</td>
+
+                       <td><a href="{%url 'selected' forms.id%}" class="btn btn-danger"
+                      >Selected</a></td>
+                        <td><a href="{%url 'notselected' forms.id%}" class="btn btn-danger"
+                      >Rejected</a></td>
+                   </tr>
+
+{%endfor%}
+
+               </table>
+
+            </form>
+
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+{%endblock%}

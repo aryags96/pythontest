@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{%extends 'employer/employerbase.html'%}
+{%load static%}
+ {%block body_block%}
+
+<div class="container">
+	<div class="row">
+		<div class="col-4"></div>
+		<div class="col-4 mt-3">
+
+			<div class="profile-userpic">
+
+                    <img src="{{user.profile_pic.url}}" class="card-img-top img-responsive rounded-circle" alt="..." style="height:200px" width="50" >
+
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name">
+						<strong >{{user}}</strong>
+					</div>
+					<div class="profile-usertitle-job">
+						Qualification: {{user.qualification}}
+					</div>
+					<div class="profile-usertitle-job">
+						Experience: {{user.experience}}
+					</div>
+						<div class="profile-usertitle-job">
+							resume:<a href="{{user.resume.url}}" download="filename">{{user.resume}}</a>
+
+
+
+					</div>
+
+
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR BUTTONS -->
+				<div class="profile-userbuttons">
+					<a href="{%url 'empapplicationsview' %}" class="btn btn-success ">back</a>
+
+				</div>
+
+			</div>
+
+		</div>
+		<div class="col-4"></div>
+	</div>
+</div>
+
+{%endblock%}

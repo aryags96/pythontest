@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{%extends 'jobseeker/jobseekerbase.html' %}
+
+ {%block body_block%}
+
+<div class="container">
+
+
+       <div class="row">
+<div class="col-3"></div>
+           <div class="col-3"></div>
+    <div class="col-3">
+      {%if messages%}
+        {%for message in messages%}
+        {%if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+
+        <div class="text-danger">
+          {{message}}
+        </div>
+        {%endif%}
+        {%endfor%}
+        {%endif%}
+    </div>
+
+            <div class="col-3"></div>
+  </div>
+ <div class="row">
+    <div class="col-4">
+
+    </div>
+
+
+ {%for job in jobs%}
+         <div class="col-4 mt-4">
+            <div class="card" style="width: 80%;">
+                <img src="{{job.company.logo.url}}" alt="">
+                <ul class="list-group list-group-flush">
+
+                    <li class="list-group-item">Company:{{job.company}}</li>
+                    <li class="list-group-item">Experience: {{job.experience}}</li>
+                    <li class="list-group-item">Job Role: {{job.post_name}}</li>
+                    <li class="list-group-item">Responsibilities: {{job.description}}</li>
+                    <li class="list-group-item">Posted Date: {{job.posted_date}}</li>
+                     <li class="list-group-item">Last Date: {{job.last_date}}</li>
+
+                     <li class="list-group-item">
+
+                         <a href="{%url 'applyjob' job.id %}" class="btn btn-primary">Apply</a>
+                     </li>
+                </ul>
+            </div>
+
+        </div>
+        {%endfor%}
+
+      <div class="col-4"></div>
+  </div>
+</div>
+{%endblock%}
